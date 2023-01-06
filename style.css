@@ -26,6 +26,7 @@ ul {
     margin: 0;
     padding: 0;
     display: flex;
+    flex: auto;
 }
 
 main {
@@ -50,5 +51,5 @@ button {
     border: none;
     font-size: 24px;
     border-radius: 4px;
-    flex: auto;
+    flex: 1;
 }
