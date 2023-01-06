@@ -21,6 +21,11 @@ header, footer {
     padding: 22px;
 }
 
+footer {
+    font-size: 24px;
+    padding-bottom: 12px;
+}
+
 main {
     background-color: #202020;
     width: 50%;
@@ -50,10 +55,34 @@ div {
 }
 
 button {
-    background-color: #3b3b3b;
     margin: 2px;
     border: none;
-    font-size: 24px;
+    font-size: 28px;
     border-radius: 7px;
     flex: 1;
+}
+
+button.number {
+    background-color: #3b3b3b;
+}
+
+button.number:hover {
+    background-color: #323232;
+}
+
+button.func {
+    background-color: #323232;
+}
+
+button.func:hover {
+    background-color: #3b3b3b;
+}
+
+button.equal {
+    background-color: #76b9ed;
+    color: #2c4558;
+}
+
+button.equal:hover {
+    background-color: #6da9d8;
 }
