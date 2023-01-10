@@ -17,12 +17,12 @@ body {
 }
 
 header, footer {
-    font-size: 36px;
-    padding: 22px;
+    font-size: 48px;
+    padding: 18px;
 }
 
 footer {
-    font-size: 24px;
+    font-size: 20px;
     padding-bottom: 12px;
 }
 
@@ -43,10 +43,10 @@ main {
 
 div.screen {
     flex: 2;
-    font-size: 36px;
+    font-size: 48px;
     justify-content: right;
     align-items: center;
-    padding: 16px;
+    padding: 20px;
 }
 
 div {
@@ -70,12 +70,20 @@ button.number:hover {
     background-color: #323232;
 }
 
+button.number:active {
+    background-color: #282828;
+}
+
 button.func {
     background-color: #323232;
 }
 
 button.func:hover {
     background-color: #3b3b3b;
+}
+
+button.func:active {
+    background-color: #323232;
 }
 
 button.equal {
@@ -85,4 +93,8 @@ button.equal {
 
 button.equal:hover {
     background-color: #6da9d8;
+}
+
+button.equal:active {
+    background-color: #649ac3;
 }
