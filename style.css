@@ -86,15 +86,15 @@ button.func:active {
     background-color: #323232;
 }
 
-button.equal {
+button#equal {
     background-color: #76b9ed;
     color: #2c4558;
 }
 
-button.equal:hover {
+button#equal:hover {
     background-color: #6da9d8;
 }
 
-button.equal:active {
+button#equal:active {
     background-color: #649ac3;
 }

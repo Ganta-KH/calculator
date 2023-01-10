@@ -1,5 +1,8 @@
 function clear() {
     screen.textContent = "";
+    x = null;
+    y = null;
+    operator = "";
 }
 
 function Delete() {
@@ -17,18 +20,21 @@ function addToScreen(num) {
     screen.textContent += num;
 }
 
-function operate(numbers, operator) {
-    if (numbers.length === 1) screen.textContent = numbers[0];
-    else if (numbers.length === 0) screen.textContent = "";
-    else {
-        switch (operator) {
-            case '+': screen.textContent = numbers[0] + numbers[1];
-            case '-': screen.textContent = numbers[0] - numbers[1];
-            case 'x': screen.textContent = numbers[0] * numbers[1];
-            case '/':
-                if (numbers[1] === 0) screen.textContent = 'Math Error';
-                else screen.textContent = numbers[0] / numbers[1];
-        }
+function operate(x, y, operator) {
+    switch (operator) {
+        case '+': return x + y;
+        case '-': return x - y;
+        case 'x': return x * y;
+        case '/':
+            if (y === 0) return 'Math Error';
+            else return x / y;
+    }
+}
+
+function calculate() {
+    if (x !== null && y === null) screen.textContent = operate(x, parseInt(screen.textContent), operator);
+    else if (x !== null && y !== null) {
+        screen.textContent = operate(x, y, operator)
     }
 }
 
@@ -36,15 +42,29 @@ const screen = document.querySelector('.screen');
 const numbers = document.querySelectorAll('.number');
 const functions = document.querySelectorAll('.func');
 let funcClick = false;
-let x = 0;
+let x = null;
 let y = null;
+let operator = '';
 
 functions.forEach(func => {
     if (func.textContent === 'CE') func.addEventListener('click', CE);
     else if (func.textContent === 'C') func.addEventListener('click', clear);
     else if (func.textContent === 'Delete') func.addEventListener('click', Delete);
+    else if (func.textContent === '=') func.addEventListener('click', calculate);
     else {
-        func.addEventListener('click', () => funcClick = true);
+        func.addEventListener('click', () => {
+            console.log(x, y, operator);
+            funcClick = true;
+            if (x === null) x = parseInt(screen.textContent);
+            else if (x !== null && y === null) {
+                y = parseInt(screen.textContent);
+                x = operate(x, y, operator);
+                y = null;
+                screen.textContent = x;
+            }
+            operator = func.textContent;
+            console.log(x, y, operator);
+        });
     };
 });
 
