@@ -1,10 +1,13 @@
+// clear all the old the calculation and reset all
 function clear() {
     screen.textContent = "";
     x = null;
     y = null;
+    // no operator selected
     operator = "";
 }
 
+// function delete the last digit put on screen
 function Delete() {
     let str = screen.textContent;
     if (str.length !== 0 || str.length !== 1) {
@@ -12,14 +15,17 @@ function Delete() {
     } else clear();
 }
 
+// function that clear calculator screen but keep the last calculation in the background
 function CE() {
     screen.textContent = "";
 }
 
+// add to screen the digit clicked
 function addToScreen(num) {
     screen.textContent += num;
 }
 
+// function that do all the operation (+, -, x, /)
 function operate(x, y, operator) {
     switch (operator) {
         case '+': return x + y;
@@ -31,15 +37,16 @@ function operate(x, y, operator) {
     }
 }
 
+// check if the number in screen is a integer or a float and return it
 function intOrFloat(num) {
     return num.includes('.') ? parseFloat(num) : parseInt(num);
 }
 
-console.log(intOrFloat('6.2'));
-
+// function that do the calculation when clicking in "=" button
 function calculate() {
     if (x !== null && y === null) {
         screen.textContent = operate(x, intOrFloat(screen.textContent), operator);
+        // after the calculation reset all the old ones
         x = null;
         y = null;
         operator = "";
@@ -49,9 +56,13 @@ function calculate() {
     }
 }
 
+// check if calculation in a Math Error. if it is clear the calculation 
 function mathError() {
-    if (screen.textContent === 'Math Error') CE();
+    if (screen.textContent === 'Math Error') clear();
 }
+
+
+
 
 const screen = document.querySelector('.screen');
 const numbers = document.querySelectorAll('.number');
