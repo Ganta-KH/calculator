@@ -49,13 +49,22 @@ function calculate() {
     }
 }
 
+function mathError() {
+    if (screen.textContent === 'Math Error') CE();
+}
+
 const screen = document.querySelector('.screen');
 const numbers = document.querySelectorAll('.number');
 const functions = document.querySelectorAll('.func');
+const buttons = document.querySelectorAll('button');
 let funcClick = false;
 let x = null;
 let y = null;
 let operator = '';
+
+buttons.forEach(button => {
+    button.addEventListener('click', mathError);
+});
 
 functions.forEach(func => {
     if (func.textContent === 'CE') func.addEventListener('click', CE);
