@@ -31,8 +31,19 @@ function operate(x, y, operator) {
     }
 }
 
+function intOrFloat(num) {
+    return num.includes('.') ? parseFloat(num) : parseInt(num);
+}
+
+console.log(intOrFloat('6.2'));
+
 function calculate() {
-    if (x !== null && y === null) screen.textContent = operate(x, parseInt(screen.textContent), operator);
+    if (x !== null && y === null) {
+        screen.textContent = operate(x, intOrFloat(screen.textContent), operator);
+        x = null;
+        y = null;
+        operator = "";
+    }
     else if (x !== null && y !== null) {
         screen.textContent = operate(x, y, operator)
     }
@@ -55,9 +66,9 @@ functions.forEach(func => {
         func.addEventListener('click', () => {
             console.log(x, y, operator);
             funcClick = true;
-            if (x === null) x = parseInt(screen.textContent);
+            if (x === null) x = intOrFloat(screen.textContent) //parseInt(screen.textContent);
             else if (x !== null && y === null) {
-                y = parseInt(screen.textContent);
+                y = intOrFloat(screen.textContent) // parseInt(screen.textContent);
                 x = operate(x, y, operator);
                 y = null;
                 screen.textContent = x;
